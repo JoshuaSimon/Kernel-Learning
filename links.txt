@@ -1,0 +1,7 @@
+Some usefull links on the topic:
+
+https://tonio73.github.io/data-science/classification/ClassificationSVM.html
+http://www.adeveloperdiary.com/data-science/machine-learning/support-vector-machines-for-beginners-kernel-svm/
+https://stackabuse.com/implementing-svm-and-kernel-svm-with-pythons-scikit-learn/
+https://towardsdatascience.com/understanding-the-kernel-trick-e0bc6112ef78
+https://towardsdatascience.com/the-kernel-trick-c98cdbcaeb3f
