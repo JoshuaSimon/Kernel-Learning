@@ -1,7 +1,12 @@
 Some usefull links on the topic:
 
-https://tonio73.github.io/data-science/classification/ClassificationSVM.html
+https://tonio73.github.io/data-science/classification/ClassificationSVM.html <-- cloud be nice for us.
 http://www.adeveloperdiary.com/data-science/machine-learning/support-vector-machines-for-beginners-kernel-svm/
 https://stackabuse.com/implementing-svm-and-kernel-svm-with-pythons-scikit-learn/
 https://towardsdatascience.com/understanding-the-kernel-trick-e0bc6112ef78
 https://towardsdatascience.com/the-kernel-trick-c98cdbcaeb3f
+
+Examples with scikit learn:
+https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html
+https://scikit-learn.org/stable/auto_examples/classification/plot_digits_classification.html#sphx-glr-auto-examples-classification-plot-digits-classification-py
+https://scikit-learn.org/stable/auto_examples/svm/plot_svm_margin.html#sphx-glr-auto-examples-svm-plot-svm-margin-py <-- cloud be nice for us.
