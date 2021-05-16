@@ -78,6 +78,7 @@
 
 \usepackage{graphicx} % Allows including images
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{amsmath} % Math env.
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
@@ -111,10 +112,143 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 %----------------------------------------------------------------------------------------
 
 %------------------------------------------------
-\section{First Section} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+\section{Introduction} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
 %------------------------------------------------
 
-\subsection{Subsection Example} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+\subsection{Linearly separable data classes} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+
+\begin{frame}{}
+    \frametitle{Linearly separable data classes}
+    First, let's consider a given data set $\mathcal{X}$ of labeled points with individual labels $y_i \in \left\{ -1,1 \right\}$. Our goal is to implement a classification method, which is able to classify new and unlabeld data points with the right or "best" label. \\~\\
+    - Plot of data points - 
+\end{frame}
+
+
+\begin{frame}{}
+    \frametitle{Linearly separable data classes}
+    In machine learning, an well established classification method are the so called \textbf{Support Vector Machines} (SVM). Developed by Vladimir Vapnik and his coworkers in the 1990s, SVMs are still a relevent topic and an even more powerfull tool for \textbf{classification} and \textbf{regression}.
+\end{frame}
+
+%------------------------------------------------
+\subsection{Hyperplane classifiers - Solving an optimization problem}
+
+\begin{frame}{}
+    \frametitle{Hyperplane classifiers}
+    The underlying learning algorithm of SVMs yields to find a hyperplane in some dot product space $\mathcal{H}$, which separates the data. A hyperplane of the form
+    \begin{equation}
+        \langle w,x \rangle + b = 0
+    \end{equation}
+    where $w \in \mathcal{H}, b \in \mathbb{R}$ shall be considered [p.11 Kernel Learning Book]. Futhermore decision functions 
+    \begin{equation}
+        f(x) = sgn \left( \langle w,x \rangle + b \right)
+    \end{equation}
+    can be used as similarity measures for unlabeld data.
+\end{frame}
+
+
+\begin{frame}{}
+    \frametitle{Hyperplane classifiers - A constrained optimization problem}
+    The optimal hyperplane can be calculated by finding the normal vector that leads to the largest margin. Thus we need to solve the optimization problem
+    \begin{equation} \label{eq:1}
+        \begin{aligned}
+            \min_{w \in \mathcal{H}, b \in \mathbb{R}} \quad & \tau (w) = \frac{1}{2} \lVert w \rVert^2 \\
+            \textrm{subject to} \quad & y_{i} \left( \langle w,x \rangle + b \right) \geq 1 \text{ } \forall i = {1, \dots, m}. 
+        \end{aligned}
+    \end{equation}
+    The constraints in \eqref{eq:1} ensure that $f(x_i)$ will be $+1$ for $y_i = +1$ and $-1$ for  $y_i = -1$. The $\geq 1$ on the right hand side of the constraints effectively fixes the scaling of $w$. This leads to the maximum margin hyperplane. A detailed explanation can be found in [Chap 7, Kernel Learning Book].
+\end{frame}
+
+
+\begin{frame}{}
+    \frametitle{Hyperplane classifiers - Lagrangian}
+    The constrained optimization problem in \eqref{eq:1} can be re-written using the method of Lagrange multipliers. This leads to the Lagrangian
+    \begin{equation} \label{eq:2}
+        L(w,b,\alpha) = \frac{1}{2} \lVert w \rVert^2 - \sum_{i=1}^{m} \alpha_i \left( y_{i} \left( \langle w,x \rangle + b \right) - 1 \right)
+    \end{equation}
+    subject to $\alpha_i \geq 0 \text{ } \forall i = {1, \dots, m}$. Here, $\alpha_i$ are the Lagrange multipliers. The Lagrangian $L$ has to be minimized with respect to the primal variables $w$ and $b$ and maximized with respect to the dual variables $\alpha_i$ (in other words, a saddle point has to be found).
+\end{frame}
+
+
+\begin{frame}{}
+    \frametitle{Hyperplane classifiers - KKT conditions}
+    The Karush-Kuhn-Tucker (KKT) complementarity conditions of optimization theory state, that at the saddle point, the derivatives of $L$ with respect to the
+    primal variables must vanish, since
+    \begin{equation}
+        \frac{\partial}{\partial b} L(w,b,\alpha) = 0 \text{ and } \frac{\partial}{\partial w} L(w,b,\alpha) = 0
+    \end{equation}
+    leads to
+    \begin{equation} \label{eq:3}
+        \sum_{i=1}^{m} \alpha_i y_i = 0 \text{ and } w = \sum_{i=1}^{m} \alpha_i y_i x_i.
+    \end{equation}
+    The solution vector $w$ thus has an expansion in terms of a subset of the training patterns, namely those patterns with non-zero $\alpha_i$, called Support Vectors (SVs).
+\end{frame}
+
+
+\begin{frame}{}
+    \frametitle{Hyperplane classifiers - Dual optimization problem}
+    We can again re-write our optimization problem by substituting \eqref{eq:3} into the Lagrangian \eqref{eq:2} to eliminate the primal variables. This yields the dual optimization problem, which is usually solved in practice
+    \begin{equation} \label{eq:4}
+        \begin{aligned}
+            \max_{\alpha \in \mathbb{R}^m} \quad & W(\alpha) = \sum_{i=1}^{m} \alpha_i - \frac{1}{2} \sum_{i,j=1}^{m} \alpha_i \alpha_j y_i y_j \langle x_i,x_j \rangle \\
+            \textrm{subject to} \quad & \alpha_i \geq 0 \text{ } \forall i = {1, \dots, m} \text{ and } \sum_{i=1}^{m} \alpha_i y_i = 0. 
+        \end{aligned}
+    \end{equation}
+\end{frame}
+
+
+\begin{frame}{}
+    \frametitle{Hyperplane classifiers - Dual optimization problem}
+    Finally, the decision function can be re-written using \eqref{eq:3} as
+    \begin{equation}
+        f(x) = sgn \left( \sum_{i=1}^{m} \alpha_i y_i \langle x,x_i \rangle + b \right),
+    \end{equation}
+    where $b$ can be computed by exploiting $\alpha_i \left[ y_i \left( \langle x_i,w \rangle + b \right) - 1 \right] = 0$, which follows from the KKT conditions.
+\end{frame}
+
+
+
+%------------------------------------------------
+\section{Linear SVMs}
+%------------------------------------------------
+
+\subsection{Maximum margin separator}
+
+\begin{frame}{}
+    \frametitle{Maximum margin separator}
+    We now have all the theoretical background to go back to our inital classification problem. We can implement a SVM as an maximum margin separator for the given data set $\mathcal{X}$. \\~\\
+    - Python code, plots, etc. -  
+\end{frame}
+
+%------------------------------------------------
+
+\subsection{Limitations}
+
+\begin{frame}{}
+    \frametitle{Limitations}
+    Let's consider the following data set. \\~\\ 
+    - Plot of nonlinear separable data - 
+\end{frame}
+
+
+
+%------------------------------------------------
+\section{Nonlinear SVMs}
+%------------------------------------------------
+
+\subsection{The kernel trick}
+\subsection{Solving nonlinear separable classification problemes}
+
+%------------------------------------------------
+
+
+
+
+
+
+%------------------------------------------------
+% Template things....
+%------------------------------------------------
+
 
 \begin{frame}
 \frametitle{Paragraphs of Text}
@@ -174,8 +308,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ul
 \end{frame}
 
 %------------------------------------------------
-\section{Second Section}
-%------------------------------------------------
+
 
 \begin{frame}
 \frametitle{Table}
