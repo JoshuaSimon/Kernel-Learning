@@ -12,6 +12,9 @@ model.fit(X, y)
 
 #scatterplot (data)
 plt.scatter(X[:, 0], X[:, 1], c=y)
+plt.show()
+
+plt.scatter(X[:, 0], X[:, 1], c=y)
 
 #adding decision function
 ax = plt.gca()
