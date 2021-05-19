@@ -86,12 +86,13 @@
 
 \title[Kernel Learning]{Kernel Learning And Its Application In Nonlinear Support Vector Machines} % The short title appears at the bottom of every slide, the full title is only on the title page
 
-\author{Sven Nekula, Joshua Simon} % Your name
+\author{Anastasia S., Sven N., Joshua S.} % Your name
 \institute[] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
 {
 Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 \medskip
-\textit{sven.nekula@stud.uni-bamberg.de \\} % Your email address
+\textit{anastasia.sinitsyna@stud.uni-bamberg.de \\}
+\textit{sven-jason-waldemar.nekula@stud.uni-bamberg.de \\} % Your email address
 \textit{joshua-guenter.simon@stud.uni-bamberg.de} % Your email address
 }
 \date{\today} % Date, can be changed to a custom date
@@ -122,8 +123,17 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
     First, let's consider a given data set $\mathcal{X}$ of labeled points (inputs) with individual labels $y_i \in \left\{ -1,1 \right\}$, e.g. $(x_1,y_1), ..., (x_m, y_m) \in \mathcal{X} \times \left\{ -1,1 \right\}$. \\~\\
     
     Our goal is to implement a classification method, which is able to classify new and unlabeld data points with the right or "best" label. \\~\\
-    
-    - Plot of data points - 
+\end{frame}
+
+
+\begin{frame}{}
+	\frametitle{Linearly separable data classes}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\linewidth]{img/LinearSVM_Data.png}
+		\caption{ An example for linearly separable data.}
+		\label{fig:lineardata}
+	\end{figure} 
 \end{frame}
 
 
@@ -218,8 +228,18 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 
 \begin{frame}{}
     \frametitle{Maximum margin separator}
-    We now have all the theoretical background to go back to our inital classification problem. We can implement a SVM as an maximum margin separator for the given data set $\mathcal{X}$. \\~\\
-    - Python code, plots, etc. -  
+    We now have all the theoretical background to go back to our inital classification problem. We can implement a SVM as an maximum margin separator for the given data set $\mathcal{X}$. \\~\\  
+\end{frame}
+
+\begin{frame}{}
+	\frametitle{Maximum margin separator}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\linewidth]{img/LinearSVM_complete.png}
+		\caption{Implementation of a SVM with linearly separable data.}
+		\label{fig:linearsvm}
+	\end{figure}
+	 
 \end{frame}
 
 %------------------------------------------------
