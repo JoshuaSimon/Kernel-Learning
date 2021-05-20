@@ -113,10 +113,12 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 %----------------------------------------------------------------------------------------
 
 %------------------------------------------------
-\section{Introduction} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+\section{Introduction} 
 %------------------------------------------------
 
-\subsection{Linearly separable data classes} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+
+%------------------------------------------------
+\subsection{Linearly separable data classes}
 
 \begin{frame}{}
     \frametitle{Linearly separable data classes}
@@ -142,6 +144,36 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
     In machine learning, a well established classification method are the so called \textbf{Support Vector Machines} (SVM). Developed by Vladimir Vapnik and his coworkers in the 1990s, SVMs are still a relevent topic and an even more powerfull tool for \textbf{classification} and \textbf{regression}.
 \end{frame}
 
+
+%------------------------------------------------
+\subsection{Similarity, dot product and vector norm}
+
+\begin{frame}{}
+    \frametitle{Similarity}
+    To perform a classification, a similarity measure is needed. Finding a suitable measure is a core problem of machine learning. For now let's consider 
+    \begin{equation}
+        \begin{aligned}
+            k: \mathcal{X} \times \mathcal{X} & \rightarrow \mathbb{R} \\
+            (x, x') & \mapsto k(x, x')
+        \end{aligned}
+    \end{equation}
+    where $k$ is a function that, given two patterns $x$ and $x'$, returns a real number characterizing their similarity. This function $k$ is called a \textbf{kernel}. Unless stated otherwise, $k(x, x') = k(x', x)$.
+\end{frame}
+
+
+\begin{frame}{}
+    \frametitle{Dot product and vector norm}
+    A simple type of similarity measure is a \textbf{dot product}. Given two vectors $x, x' \in \mathbb{R}^n$ the canonical dot product is defined as
+    \begin{equation}
+        \langle x,x' \rangle = \sum_{i = 1}^{n} x_i x'_i.
+    \end{equation}
+    Futhermore this allows a calculation of the \textbf{norm} (length) of a single vector $x$ as 
+    \begin{equation}
+        \left\lVert x \right\rVert = \sqrt{\langle x,x \rangle}.
+    \end{equation}
+\end{frame}
+
+
 %------------------------------------------------
 \subsection{Hyperplane classifiers - Solving an optimization problem}
 
@@ -155,13 +187,13 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
     \begin{equation}
         f(x) = sgn \left( \langle w,x \rangle + b \right)
     \end{equation}
-    can be used as similarity measures for unlabeld data.
+    can be asigned.
 \end{frame}
 
 
 \begin{frame}{}
     \frametitle{Hyperplane classifiers - A constrained optimization problem}
-    The optimal hyperplane can be calculated by finding the normal vector that leads to the largest margin. Thus we need to solve the optimization problem
+    The \textbf{optimal hyperplane} can be calculated by finding the normal vector that leads to the largest margin. Thus we need to solve the optimization problem
     \begin{equation} \label{eq:1}
         \begin{aligned}
             \min_{w \in \mathcal{H}, b \in \mathbb{R}} \quad & \tau (w) = \frac{1}{2} \lVert w \rVert^2 \\
@@ -228,7 +260,7 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 
 \begin{frame}{}
     \frametitle{Maximum margin separator}
-    We now have all the theoretical background to go back to our inital classification problem. We can implement a SVM as an maximum margin separator for the given data set $\mathcal{X}$. \\~\\  
+    We now have all the theoretical background to go back to our inital classification problem. We can implement a SVM as a maximum margin separator for the given data set $\mathcal{X}$. \\~\\  
 \end{frame}
 
 \begin{frame}{}
@@ -263,6 +295,14 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 
 %------------------------------------------------
 
+
+
+%------------------------------------------------
+\section{More kernel applications}
+%------------------------------------------------
+
+
+%------------------------------------------------
 
 
 
