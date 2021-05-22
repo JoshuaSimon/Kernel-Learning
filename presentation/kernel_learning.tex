@@ -79,6 +79,7 @@
 \usepackage{graphicx} % Allows including images
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage{amsmath} % Math env.
+\usepackage{fontawesome}
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
@@ -95,7 +96,7 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 \textit{sven-jason-waldemar.nekula@stud.uni-bamberg.de \\} % Your email address
 \textit{joshua-guenter.simon@stud.uni-bamberg.de} % Your email address
 }
-\date{\today} % Date, can be changed to a custom date
+\date{June 9, 2021} % Date, can be changed to a custom date
 
 \begin{document}
 
@@ -108,6 +109,7 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 \tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
 \end{frame}
 
+
 %----------------------------------------------------------------------------------------
 %	PRESENTATION SLIDES
 %----------------------------------------------------------------------------------------
@@ -116,8 +118,6 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 \section{Introduction} 
 %------------------------------------------------
 
-
-%------------------------------------------------
 \subsection{Linearly separable data classes}
 
 \begin{frame}{}
@@ -165,12 +165,13 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
     \frametitle{Dot product and vector norm}
     A simple type of similarity measure is a \textbf{dot product}. Given two vectors $x, x' \in \mathbb{R}^n$ the canonical dot product is defined as
     \begin{equation}
-        \langle x,x' \rangle = \sum_{i = 1}^{n} x_i x'_i.
+        \langle x,x' \rangle = (x')^T x = \sum_{i = 1}^{n} x_i x'_i.
     \end{equation}
     Futhermore this allows a calculation of the \textbf{norm} (length) of a single vector $x$ as 
     \begin{equation}
         \left\lVert x \right\rVert = \sqrt{\langle x,x \rangle}.
     \end{equation}
+    More properties of vector spaces, dot products and norms can be found in \cite{Liesen}.
 \end{frame}
 
 
@@ -183,7 +184,7 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
     \begin{equation}
         \langle w,x \rangle + b = 0
     \end{equation}
-    where $w \in \mathcal{H}, b \in \mathbb{R}$ shall be considered [p.11 Kernel Learning Book]. Futhermore decision functions 
+    where $w \in \mathcal{H}, b \in \mathbb{R}$ shall be considered \cite{Schoelkopf}(p. 11). Futhermore decision functions 
     \begin{equation}
         f(x) = sgn \left( \langle w,x \rangle + b \right)
     \end{equation}
@@ -200,7 +201,7 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
             \textrm{subject to} \quad & y_{i} \left( \langle w,x \rangle + b \right) \geq 1 \text{ } \forall i = {1, \dots, m}. 
         \end{aligned}
     \end{equation}
-    The constraints in \eqref{eq:1} ensure that $f(x_i)$ will be $+1$ for $y_i = +1$ and $-1$ for  $y_i = -1$. The $\geq 1$ on the right hand side of the constraints effectively fixes the scaling of $w$. This leads to the maximum margin hyperplane. A detailed explanation can be found in [Chap 7, Kernel Learning Book].
+    The constraints in \eqref{eq:1} ensure that $f(x_i)$ will be $+1$ for $y_i = +1$ and $-1$ for  $y_i = -1$. The $\geq 1$ on the right hand side of the constraints effectively fixes the scaling of $w$. This leads to the maximum margin hyperplane. A detailed explanation can be found in \cite{Schoelkopf}(Chap 7).
 \end{frame}
 
 
@@ -244,10 +245,11 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 \begin{frame}{}
     \frametitle{Hyperplane classifiers - Dual optimization problem}
     Finally, the decision function can be re-written using \eqref{eq:3} as
-    \begin{equation}
+    \begin{equation} \label{eq:5}
         f(x) = sgn \left( \sum_{i=1}^{m} \alpha_i y_i \langle x,x_i \rangle + b \right),
     \end{equation}
-    where $b$ can be computed by exploiting $\alpha_i \left[ y_i \left( \langle x_i,w \rangle + b \right) - 1 \right] = 0$, which follows from the KKT conditions.
+    where $b$ can be computed by exploiting $\alpha_i \left[ y_i \left( \langle x_i,w \rangle + b \right) - 1 \right] = 0$, which follows from the KKT conditions. \\~\\
+    Details on mathematical optimization and convex constrained problems can be found in \cite{Jarre}. Explanations on dealing with nonlinear problems are given in \cite{Reinhardt}.
 \end{frame}
 
 
@@ -263,6 +265,7 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
     We now have all the theoretical background to go back to our inital classification problem. We can implement a SVM as a maximum margin separator for the given data set $\mathcal{X}$. \\~\\  
 \end{frame}
 
+
 \begin{frame}{}
 	\frametitle{Maximum margin separator}
 	\begin{figure}
@@ -274,8 +277,8 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 	 
 \end{frame}
 
-%------------------------------------------------
 
+%------------------------------------------------
 \subsection{Limitations}
 
 \begin{frame}{}
@@ -291,7 +294,64 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 %------------------------------------------------
 
 \subsection{The kernel trick}
-\subsection{Solving nonlinear separable classification problemes}
+
+\begin{frame}{}
+	\frametitle{The kernel trick}
+	To extend the introduced SVM algorithm, we can substitut \eqref{eq:5} by applying a kernel of the form
+    \begin{equation}
+        k(x,x') = \langle \Phi (x), \Phi (x_i) \rangle
+    \end{equation}
+    where 
+    \begin{equation}
+        \begin{aligned}
+            \Phi: \mathcal{X} & \rightarrow \mathcal{H} \\
+            (x) & \mapsto \Phi (x)
+        \end{aligned}
+    \end{equation}
+    is a function that maps an input from $ \mathcal{X} $ to a dot product space $ \mathcal{H} $. This is referred to as the \textbf{kernel trick}.
+\end{frame}
+
+
+\begin{frame}{}
+	\frametitle{The kernel trick}
+	We then obtain decision functions of the form
+    \begin{align}
+        f(x) & = sgn \left( \sum_{i=1}^{m} \alpha_i y_i \langle \Phi (x), \Phi (x_i) \rangle + b \right) \\ 
+        & = sgn \left( \sum_{i=1}^{m} \alpha_i y_i k(x,x_i) + b \right)
+    \end{align}
+    and the optimization problem
+    \begin{equation} \label{eq:6}
+        \begin{aligned}
+            \max_{\alpha \in \mathbb{R}^m} \quad & W(\alpha) = \sum_{i=1}^{m} \alpha_i - \frac{1}{2} \sum_{i,j=1}^{m} \alpha_i \alpha_j y_i y_j k(x, x_i) \\
+            \textrm{subject to} \quad & \alpha_i \geq 0 \text{ } \forall i = {1, \dots, m} \text{ and } \sum_{i=1}^{m} \alpha_i y_i = 0. 
+        \end{aligned}
+    \end{equation}
+\end{frame}
+
+
+\begin{frame}{}
+	\frametitle{The kernel trick}
+	The kernel trick can be applied since all feature vectors only occurred in dot products. A more precise explanation can be found in \cite{Schoelkopf}(Chap. 2).
+\end{frame}
+
+
+%------------------------------------------------
+\subsection{Solving nonlinear separable classification problems}
+
+\begin{frame}{}
+	\frametitle{A suitable kernel}
+	Going back to our problem of nonlinear separable data, we can use a kernel function of the form
+    \begin{equation}
+        k(x, x') = exp \left( - \frac{\left\lVert x - x' \right\rVert^2}{2 \sigma^2} \right),
+    \end{equation}
+    a so called \textbf{Gaussian radial basis function} with $ \sigma > 0$.
+\end{frame}
+
+
+\begin{frame}{}
+	\frametitle{Solving the nonlinear problem}
+	- Python plot -
+\end{frame}
 
 %------------------------------------------------
 
@@ -302,145 +362,31 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 %------------------------------------------------
 
 
-%------------------------------------------------
-
-
-
-
 
 %------------------------------------------------
-% Template things....
-%------------------------------------------------
-
-
-\begin{frame}
-\frametitle{Paragraphs of Text}
-Sed iaculis dapibus gravida. Morbi sed tortor erat, nec interdum arcu. Sed id lorem lectus. Quisque viverra augue id sem ornare non aliquam nibh tristique. Aenean in ligula nisl. Nulla sed tellus ipsum. Donec vestibulum ligula non lorem vulputate fermentum accumsan neque mollis.\\~\\
-
-Sed diam enim, sagittis nec condimentum sit amet, ullamcorper sit amet libero. Aliquam vel dui orci, a porta odio. Nullam id suscipit ipsum. Aenean lobortis commodo sem, ut commodo leo gravida vitae. Pellentesque vehicula ante iaculis arcu pretium rutrum eget sit amet purus. Integer ornare nulla quis neque ultrices lobortis. Vestibulum ultrices tincidunt libero, quis commodo erat ullamcorper id.
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Bullet Points}
-\begin{itemize}
-\item Lorem ipsum dolor sit amet, consectetur adipiscing elit
-\item Aliquam blandit faucibus nisi, sit amet dapibus enim tempus eu
-\item Nulla commodo, erat quis gravida posuere, elit lacus lobortis est, quis porttitor odio mauris at libero
-\item Nam cursus est eget velit posuere pellentesque
-\item Vestibulum faucibus velit a augue condimentum quis convallis nulla gravida
-\end{itemize}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Blocks of Highlighted Text}
-\begin{block}{Block 1}
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
-\end{block}
-
-\begin{block}{Block 2}
-Pellentesque sed tellus purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum quis magna at risus dictum tempor eu vitae velit.
-\end{block}
-
-\begin{block}{Block 3}
-Suspendisse tincidunt sagittis gravida. Curabitur condimentum, enim sed venenatis rutrum, ipsum neque consectetur orci, sed blandit justo nisi ac lacus.
-\end{block}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Multiple Columns}
-\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
-
-\column{.45\textwidth} % Left column and width
-\textbf{Heading}
-\begin{enumerate}
-\item Statement
-\item Explanation
-\item Example
-\end{enumerate}
-
-\column{.5\textwidth} % Right column and width
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
-
-\end{columns}
-\end{frame}
-
-%------------------------------------------------
-
-
-\begin{frame}
-\frametitle{Table}
-\begin{table}
-\begin{tabular}{l l l}
-\toprule
-\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
-\midrule
-Treatment 1 & 0.0003262 & 0.562 \\
-Treatment 2 & 0.0015681 & 0.910 \\
-Treatment 3 & 0.0009271 & 0.296 \\
-\bottomrule
-\end{tabular}
-\caption{Table caption}
-\end{table}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Theorem}
-\begin{theorem}[Mass--energy equivalence]
-$E = mc^2$
-\end{theorem}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
-\frametitle{Verbatim}
-\begin{example}[Theorem Slide Code]
-\begin{verbatim}
-\begin{frame}
-\frametitle{Theorem}
-\begin{theorem}[Mass--energy equivalence]
-$E = mc^2$
-\end{theorem}
-\end{frame}\end{verbatim}
-\end{example}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}
-\frametitle{Figure}
-Uncomment the code on this slide to include your own image from the same directory as the template .TeX file.
-%\begin{figure}
-%\includegraphics[width=0.8\linewidth]{test}
-%\end{figure}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
-\frametitle{Citation}
-An example of the \verb|\cite| command to cite within the presentation:\\~
-
-This statement requires citation \cite{p1}.
-\end{frame}
-
+% References
 %------------------------------------------------
 
 \begin{frame}
 \frametitle{References}
 \footnotesize{
 \begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
-\bibitem[Smith, 2012]{p1} John Smith (2012)
-\newblock Title of the publication
-\newblock \emph{Journal Name} 12(3), 45 -- 678.
+    \bibitem[Schölkopf, 2002]{Schoelkopf} Schölkopf, Bernhard, Alexander J. Smola
+    \newblock Learning with Kernels: Support Vector Machines, Regularization, Optimization, and Beyond. MIT press, 2002.
+
+    \bibitem[Liesen, 2015]{Liesen} Liesen, Jörg, Volker Mehrmann
+    \newblock Lineare Algebra. Wiesbaden, Germany: Springer, 2015.
+
+    \bibitem[Jarre, 2019]{Jarre} Jarre, Florian, Josef Stoer. 
+    \newblock Optimierung: Einführung in mathematische Theorie und Methoden. Springer-Verlag, 2019.
+
+    \bibitem[Reinhardt, 2012]{Reinhardt} Reinhardt, Rüdiger, Armin Hoffmann, Tobias Gerlach. 
+    \newblock Nichtlineare Optimierung: Theorie, Numerik und Experimente. Springer-Verlag, 2012.
+
+    % Example entry.
+    %\bibitem[Smith, 2012]{p3} John Smith (2002)
+    %\newblock Title of the publication
+    %\newblock \emph{Journal Name} 12(3), 45 -- 678.
 \end{thebibliography}
 }
 \end{frame}
@@ -448,7 +394,16 @@ This statement requires citation \cite{p1}.
 %------------------------------------------------
 
 \begin{frame}
-\Huge{\centerline{The End}}
+    \Huge{\centerline{Time for your questions!}}
+    \bigskip
+    \bigskip
+    \bigskip
+    \bigskip
+
+    \normalsize
+    Follow our development on GitHub \faicon{github} 
+    \url{https://github.com/JoshuaSimon/Kernel-Learning}
+    
 \end{frame}
 
 %----------------------------------------------------------------------------------------
