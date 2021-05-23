@@ -5,6 +5,7 @@
 # -> https://docs.scipy.org/doc/scipy/reference/optimize.minimize-slsqp.html#optimize-minimize-slsqp
 # -> https://tonio73.github.io/data-science/classification/ClassificationSVM.html
 # -> https://www.csie.ntu.edu.tw/~cjlin/papers/libsvm.pdf
+# -> https://scikit-learn.org/stable/modules/svm.html
 
 import numpy as np
 import matplotlib.pyplot as plt
