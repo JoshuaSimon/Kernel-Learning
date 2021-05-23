@@ -79,7 +79,7 @@
 \usepackage{graphicx} % Allows including images
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage{amsmath} % Math env.
-\usepackage{fontawesome}
+\usepackage{fontawesome} % Icons for GitHub, etc.
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
@@ -358,15 +358,15 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 
 
 %------------------------------------------------
-\subsection{Solving nonlinear separable classification problems}
+\subsection{Solving non linearly separable classification problems}
 
 \begin{frame}{}
 	\frametitle{A suitable kernel}
-	Going back to our problem of nonlinear separable data, we can use a kernel function of the form
+	Going back to our problem of non linearly separable data, we can use a kernel function of the form
     \begin{equation}
         k(x, x') = exp \left( - \frac{\left\lVert x - x' \right\rVert^2}{2 \sigma^2} \right),
     \end{equation}
-    a so called \textbf{Gaussian radial basis function} with $ \sigma > 0$.
+    a so called \textbf{Gaussian radial basis function} (GRBF or RFB kernels) with $ \sigma > 0$.
 \end{frame}
 
 
