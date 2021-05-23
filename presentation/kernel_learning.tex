@@ -283,8 +283,30 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 
 \begin{frame}{}
     \frametitle{Limitations}
-    Let's consider the following data set. \\~\\ 
-    - Plot of nonlinear separable data - 
+    Let's consider the following data sets. \\~\\ 
+    \begin{figure}[h]
+    	\begin{tabular}{ll}
+    		\includegraphics[scale=0.35]{img/moonshape.png}
+    		&
+    		\includegraphics[scale=0.35]{img/circleshape.png}
+    	\end{tabular}
+    	\caption{Two examples of data that can't be linearly separated.}
+    	\label{Fig:nonlineardata}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{}
+	\frametitle{Limitations}
+	What happens if you try to seperate them linearly? \\~\\ 
+	\begin{figure}[h]
+		\begin{tabular}{ll}
+			\includegraphics[scale=0.35]{img/linearSVM_moon.png}
+			&
+			\includegraphics[scale=0.35]{img/linearSVM_circles.png}
+		\end{tabular}
+		\caption{SVMs using the 'linear' Kernel.}
+		\label{Fig:nlinearsvmnonlineardata}
+	\end{figure}
 \end{frame}
 
 
@@ -350,7 +372,15 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 
 \begin{frame}{}
 	\frametitle{Solving the nonlinear problem}
-	- Python plot -
+	\begin{figure}[h]
+		\begin{tabular}{ll}
+			\includegraphics[scale=0.35]{img/rbfSVM_moon.png}
+			&
+			\includegraphics[scale=0.35]{img/rbfSVM_circles.png}
+		\end{tabular}
+		\caption{SVMs using the 'rbf' Kernel.}
+		\label{Fig:rbfsvms}
+	\end{figure}
 \end{frame}
 
 %------------------------------------------------
