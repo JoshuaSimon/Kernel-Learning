@@ -170,7 +170,7 @@ if __name__ == "__main__":
 
     # Train the SVM model using different kernel functions.
     kernels = [linear, dim_plus_1,
-                wrapped_partial(polynomial, d=1, r=0.0, gamma='auto'), 
+                wrapped_partial(polynomial, d=3, r=0.0, gamma='auto'), 
                 wrapped_partial(grbf, gamma='scale'), 
                 wrapped_partial(sigmoid, r=0.0, gamma='auto')]
 
