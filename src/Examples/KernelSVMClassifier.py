@@ -11,6 +11,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import optimize
 from pandas import read_csv
+from functools import partial, update_wrapper
 
 
 class KernelSVM:
@@ -19,7 +20,7 @@ class KernelSVM:
     Takes a margin parameter C and a kernel funtion as
     input arguments.
     """
-    def __init__(self, C, kernel):
+    def __init__(self, kernel, C=1):
         self.C = C
         self.kernel = kernel
         self.alpha = None
@@ -92,31 +93,49 @@ def linear(x1, x2):
     return np.dot(x1, x2)
 
 
-def polynomial(x1, x2, d, r, gamma):
+def dim_plus_1(x1, x2):
+    """ Experimental kernel. """
+    return np.dot(x1, x2) + np.dot(x1, x1) * np.dot(x2, x2)
+
+
+def polynomial(x1, x2, d=3, r=0, gamma='auto'):
     """ Polynomial kernel function. """
+    if gamma == 'auto':
+        gamma = 1 / len(x1)
+    elif gamma == 'scale':
+        gamma = 1 / (len(x1) * np.var(x1))
+
     return (gamma * np.dot(x1, x2) + r)**d
 
 
-def GRBF(x1, x2, gamma=None):
+def grbf(x1, x2, gamma='scale'):
     """ Gaussian radial basis function for RBF kernels. """
-    if gamma is None:
-        gamma = len(x1)
+    if gamma == 'auto':
+        gamma = 1 / len(x1)
+    elif gamma == 'scale':
+        gamma = 1 / (len(x1) * np.var(x1))
+
     diff = x1 - x2
     return np.exp(-1.0 * gamma * np.dot(diff, diff) / 2)
 
 
-def sigmoid(x1, x2, r, gamma):
+def sigmoid(x1, x2, r=0, gamma='auto'):
     """ Sigmoid kernel function. """
+    if gamma == 'auto':
+        gamma = 1 / len(x1)
+    elif gamma == 'scale':
+        gamma = 1 / (len(x1) * np.var(x1))
+
     return np.tanh(gamma * np.dot(x1, x2) + r)
 
 
-def plotSVM(xTrain, yTrain, x0Predict, x1Predict, yPredict, support):
+def plot_SVM(xTrain, yTrain, x0Predict, x1Predict, yPredict, support):
     """ Plots training data and support vectors with decision boundary. """
     plt.scatter(xTrain[:,0], xTrain[:,1], c=yTrain, 
                 label="Training Data")
     ax = plt.gca()            
     ax.scatter(support[:,0], support[:,1], s=100, 
-                linewidth=1, facecolor=None, edgecolor="k", 
+                linewidth=1, facecolor='none', edgecolor="k", 
                 label="Support Vectors")
     ax.contour(x0Predict, x1Predict, yPredict, 
                 colors='k', levels=[-1, 0], alpha=0.3, 
@@ -125,21 +144,38 @@ def plotSVM(xTrain, yTrain, x0Predict, x1Predict, yPredict, support):
     plt.show()
 
 
-if __name__ == "__main__":
-    # Read and map trainings data.
-    #data = read_csv("src/examples/data/circleshape.csv")
-    data = read_csv("src/examples/data/moonshape.csv")
-    #data = read_csv("src/examples/data/linearshape.csv")
+def wrapped_partial(func, *args, **kwargs):
+    """ Wraps a partial function to set attributes like __name__ and __doc__. """
+    partial_func = partial(func, *args, **kwargs)
+    update_wrapper(partial_func, func)
+    return partial_func
 
+
+
+if __name__ == "__main__":
+    # Read training data.
+    filenames = ["src/examples/data/circleshape.csv",
+                "src/examples/data/moonshape.csv",
+                "src/examples/data/linearshape.csv"]
+    try:
+        data = read_csv(filenames[1])
+    except FileNotFoundError: 
+        print("Couldn't find file: %s. Please check the file path." % (filenames[1]))
+        exit()
+
+    # Map training data.
     xTrain = np.c_[np.array(data["x"]), np.array(data["y"])]
     yTrain = np.array(data["label"])
     yTrain = np.where(yTrain == 0, -1, yTrain)
 
     # Train the SVM model using different kernel functions.
-    #kernels = [linear, polynomial, GRBF, sigmoid] # Argument passing needs to be implemented.
-    kernels = [linear, GRBF]
+    kernels = [linear, dim_plus_1,
+                wrapped_partial(polynomial, d=1, r=0.0, gamma='auto'), 
+                wrapped_partial(grbf, gamma='scale'), 
+                wrapped_partial(sigmoid, r=0.0, gamma='auto')]
+
     for kernel in kernels:
-        model = KernelSVM(C=10, kernel=kernel)
+        model = KernelSVM(kernel=kernel, C=10)
         model.fit(xTrain, yTrain)
         support = model.supportVectors
 
@@ -153,4 +189,4 @@ if __name__ == "__main__":
         yPredict = model.predict(xPredict).reshape(x0Predict.shape)
 
         # Plot the results of the fitted model w ith decision boundary.
-        plotSVM(xTrain, yTrain, x0Predict, x1Predict, yPredict, support)
+        plot_SVM(xTrain, yTrain, x0Predict, x1Predict, yPredict, support)
