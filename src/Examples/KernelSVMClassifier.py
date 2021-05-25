@@ -57,7 +57,7 @@ class KernelSVM:
                        {'type': 'ineq', 'fun': lambda a: b - np.dot(A, a), 'jac': lambda a: -A})
 
         # Solve the dual optimization problem.
-        # To calculate the maximum, we can minimizing the opposite.
+        # To calculate the maximum, we can minimize the opposite.
         # Since our problem is a quadratic programming problem, we can
         # use the "SLSQP" solver method. 
         # SLSQP optimizer is a sequential least squares programming algorithm 
