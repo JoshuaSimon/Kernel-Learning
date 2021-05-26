@@ -29,7 +29,7 @@ import pandas as pd
 #### CIRCLE SHAPE ####
 
 
-#X, y = make_circles(n_samples = 100, noise = 0.05, random_state = 321)
+#X, y = make_circles(n_samples = 100, factor = 0.4, noise = 0.1, random_state = 321)
 
 #plt.scatter(X[:, 0], X[:, 1], c = y)
 #plt.show()

@@ -4,7 +4,7 @@ from sklearn import svm
 from sklearn.datasets import make_circles
 
 #generating moon-shaped data
-X, y = make_circles(n_samples = 100, noise = 0.05, random_state = 321)
+X, y = make_circles(n_samples = 100, factor = 0.4, noise = 0.1, random_state = 321)
 
 #linear SVM
 lmodel = svm.SVC(kernel='linear')
