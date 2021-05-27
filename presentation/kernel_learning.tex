@@ -298,7 +298,26 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 	\begin{equation}
 		\xi_{ i } \geq 0 \text{ } \forall i = {1, \dots, m}
 	\end{equation}
-	Work in Progress!
+	in the simplest case, this leads to 
+	\begin{equation}
+		\begin{aligned}
+			\min_{w \in \mathcal{H}, \xi \in \mathbb{R}^{n}} \quad & \tau (w, \xi) = \frac{1}{2} \lVert w \rVert^2 + \frac{C}{m} \sum_{i=1}^{m} \xi_{i} \\
+			\textrm{subject to} \quad & y_{i} \left( \langle w,x \rangle + b \right) \geq 1 - \xi_{i} \text{ } \forall i = {1, \dots, m}. 
+		\end{aligned}
+	\end{equation}
+\end{frame}
+
+\begin{frame}{}
+	\frametitle{Soft Margin Hyperplanes}
+	Our dual optimization problem also gets rewritten as
+    \begin{equation} \label{eq:6}
+	\begin{aligned}
+		\max_{\alpha \in \mathbb{R}^m} \quad & W(\alpha) = \sum_{i=1}^{m} \alpha_i - \frac{1}{2} \sum_{i,j=1}^{m} \alpha_i \alpha_j y_i y_j k(x_i, x_j) \\
+		\textrm{subject to} \quad & 0 \leq \alpha_i \leq \frac{C}{m} \text{ } \forall i = {1, \dots, m} \text{ and } \sum_{i=1}^{m} \alpha_i y_i = 0. 
+	\end{aligned}
+	\end{equation}
+	This classifier is referred to as C-SV classifier and can be used to prevent overfittintg by allowing the classifier to make false classifications. \\
+	More classifiers using soft margins can be found in \cite{Schoelkopf}(Chap. 7.5)
 \end{frame}
 
 \begin{frame}{}
