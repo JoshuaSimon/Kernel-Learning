@@ -310,11 +310,11 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 \begin{frame}{}
 	\frametitle{Soft Margin Hyperplanes}
 	Our dual optimization problem also gets rewritten as
-    \begin{equation} \label{eq:6}
-	\begin{aligned}
-		\max_{\alpha \in \mathbb{R}^m} \quad & W(\alpha) = \sum_{i=1}^{m} \alpha_i - \frac{1}{2} \sum_{i,j=1}^{m} \alpha_i \alpha_j y_i y_j k(x_i, x_j) \\
-		\textrm{subject to} \quad & 0 \leq \alpha_i \leq \frac{C}{m} \text{ } \forall i = {1, \dots, m} \text{ and } \sum_{i=1}^{m} \alpha_i y_i = 0. 
-	\end{aligned}
+    \begin{equation} \label{eq:7}
+        \begin{aligned}
+            \max_{\alpha \in \mathbb{R}^m} \quad & W(\alpha) = \sum_{i=1}^{m} \alpha_i - \frac{1}{2} \sum_{i,j=1}^{m} \alpha_i \alpha_j y_i y_j k(x_i, x_j) \\
+            \textrm{subject to} \quad & 0 \leq \alpha_i \leq \frac{C}{m} \text{ } \forall i = {1, \dots, m} \text{ and } \sum_{i=1}^{m} \alpha_i y_i = 0. 
+        \end{aligned}
 	\end{equation}
 	This classifier is referred to as C-SV classifier and can be used to prevent overfittintg by allowing the classifier to make false classifications. \\
 	More classifiers using soft margins can be found in \cite{Schoelkopf}(Chap. 7.5).
@@ -326,7 +326,7 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 		\centering
 		\includegraphics[width=0.7\linewidth]{img/SlackSVM}
 		\caption{Implementation of a SVM using the 'linear' Kernel and a soft margin.}
-		\label{fig:slackdata}
+		\label{fig:slacksvm}
 	\end{figure}
 \end{frame}
 
