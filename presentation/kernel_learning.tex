@@ -311,12 +311,6 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 
 \begin{frame}{}
 	\frametitle{Soft Margin Hyperplanes}
-	Plots of different Cs.
-\end{frame}
-
-
-\begin{frame}{}
-	\frametitle{Soft Margin Hyperplanes}
 	Our dual optimization problem also gets rewritten as
     \begin{equation} \label{eq:7}
         \begin{aligned}
@@ -328,15 +322,25 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 	More classifiers using soft margins can be found in \cite{Schoelkopf}(Chap. 7.5).
 \end{frame}
 
+
 \begin{frame}{}
 	\frametitle{Soft Margin Hyperplanes}
 	\begin{figure}
-		\centering
-		\includegraphics[width=0.7\linewidth]{img/SlackSVM}
-		\caption{Implementation of a SVM using the 'linear' Kernel and a soft margin.}
+		%\centering
+		%\includegraphics[width=0.7\linewidth]{img/SlackSVM}
+        \begin{tabular}{ll}
+    		\includegraphics[scale=0.25]{img/SlackSVM01.png}
+    		&
+    		\includegraphics[scale=0.25]{img/SlackSVM02.png} \\
+            \includegraphics[scale=0.25]{img/SlackSVM03.png}
+    		&
+    		\includegraphics[scale=0.25]{img/SlackSVM04.png}
+    	\end{tabular}
+		\caption{Implementation of a SVM using the 'linear' Kernel different soft margins.}
 		\label{fig:slacksvm}
 	\end{figure}
 \end{frame}
+
 
 \begin{frame}{}
     \frametitle{Limitations}
@@ -351,6 +355,7 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
     	\label{Fig:nonlineardata}
     \end{figure}
 \end{frame}
+
 
 \begin{frame}{}
 	\frametitle{Limitations}
@@ -501,30 +506,30 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 %------------------------------------------------
 
 \begin{frame}
-\frametitle{References}
-\footnotesize{
-\begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
-    \bibitem[Schölkopf, 2002]{Schoelkopf} Schölkopf, Bernhard, Alexander J. Smola
-    \newblock Learning with Kernels: Support Vector Machines, Regularization, Optimization, and Beyond. MIT press, 2002.
+    \frametitle{References}
+    \footnotesize{
+        \begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
+            \bibitem[Schölkopf, 2002]{Schoelkopf} Schölkopf, Bernhard, Alexander J. Smola
+            \newblock Learning with Kernels: Support Vector Machines, Regularization, Optimization, and Beyond. MIT press, 2002.
 
-    \bibitem[Liesen, 2015]{Liesen} Liesen, Jörg, Volker Mehrmann
-    \newblock Lineare Algebra. Wiesbaden, Germany: Springer, 2015.
+            \bibitem[Liesen, 2015]{Liesen} Liesen, Jörg, Volker Mehrmann
+            \newblock Lineare Algebra. Wiesbaden, Germany: Springer, 2015.
 
-    \bibitem[Jarre, 2019]{Jarre} Jarre, Florian, Josef Stoer
-    \newblock Optimierung: Einführung in mathematische Theorie und Methoden. Springer-Verlag, 2019.
+            \bibitem[Jarre, 2019]{Jarre} Jarre, Florian, Josef Stoer
+            \newblock Optimierung: Einführung in mathematische Theorie und Methoden. Springer-Verlag, 2019.
 
-    \bibitem[Reinhardt, 2012]{Reinhardt} Reinhardt, Rüdiger, Armin Hoffmann, Tobias Gerlach
-    \newblock Nichtlineare Optimierung: Theorie, Numerik und Experimente. Springer-Verlag, 2012.
+            \bibitem[Reinhardt, 2012]{Reinhardt} Reinhardt, Rüdiger, Armin Hoffmann, Tobias Gerlach
+            \newblock Nichtlineare Optimierung: Theorie, Numerik und Experimente. Springer-Verlag, 2012.
 
-    \bibitem[Chang, 2011]{libsvm} Chang, Chih-Chung, Chih-Jen Lin
-    \newblock LIBSVM : A library for support vector machines. ACM Transactions on Intelligent Systems and Technology, 2:27:1--27:27, 2011. Software available at \url{https://www.csie.ntu.edu.tw/~cjlin/libsvm/}.
+            \bibitem[Chang, 2011]{libsvm} Chang, Chih-Chung, Chih-Jen Lin
+            \newblock LIBSVM : A library for support vector machines. ACM Transactions on Intelligent Systems and Technology, 2:27:1--27:27, 2011. Software available at \url{https://www.csie.ntu.edu.tw/~cjlin/libsvm/}.
 
-    % Example entry.
-    %\bibitem[Smith, 2012]{p3} John Smith (2002)
-    %\newblock Title of the publication
-    %\newblock \emph{Journal Name} 12(3), 45 -- 678.
-\end{thebibliography}
-}
+            % Example entry.
+            %\bibitem[Smith, 2012]{p3} John Smith (2002)
+            %\newblock Title of the publication
+            %\newblock \emph{Journal Name} 12(3), 45 -- 678.
+        \end{thebibliography}
+    }
 \end{frame}
 
 %------------------------------------------------
