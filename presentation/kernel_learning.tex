@@ -302,17 +302,25 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 	\begin{equation}
 		\begin{aligned}
 			\min_{w \in \mathcal{H}, \xi \in \mathbb{R}^{n}} \quad & \tau (w, \xi) = \frac{1}{2} \lVert w \rVert^2 + \frac{C}{m} \sum_{i=1}^{m} \xi_{i} \\
-			\textrm{subject to} \quad & y_{i} \left( \langle w,x \rangle + b \right) \geq 1 - \xi_{i} \text{ } \forall i = {1, \dots, m}. 
+			\textrm{subject to} \quad & y_{i} \left( \langle w,x \rangle + b \right) \geq 1 - \xi_{i} \text{ } \forall i = {1, \dots, m}, 
 		\end{aligned}
 	\end{equation}
+    where $C \in \mathbb{R}$ is a regularization parameter.
 \end{frame}
+
+
+\begin{frame}{}
+	\frametitle{Soft Margin Hyperplanes}
+	Plots of different Cs.
+\end{frame}
+
 
 \begin{frame}{}
 	\frametitle{Soft Margin Hyperplanes}
 	Our dual optimization problem also gets rewritten as
     \begin{equation} \label{eq:7}
         \begin{aligned}
-            \max_{\alpha \in \mathbb{R}^m} \quad & W(\alpha) = \sum_{i=1}^{m} \alpha_i - \frac{1}{2} \sum_{i,j=1}^{m} \alpha_i \alpha_j y_i y_j k(x_i, x_j) \\
+            \max_{\alpha \in \mathbb{R}^m} \quad & W(\alpha) = \sum_{i=1}^{m} \alpha_i - \frac{1}{2} \sum_{i,j=1}^{m} \alpha_i \alpha_j y_i y_j \langle x_i,x_j \rangle \\
             \textrm{subject to} \quad & 0 \leq \alpha_i \leq \frac{C}{m} \text{ } \forall i = {1, \dots, m} \text{ and } \sum_{i=1}^{m} \alpha_i y_i = 0. 
         \end{aligned}
 	\end{equation}
@@ -430,6 +438,16 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 \begin{frame}{}
 	\frametitle{Solving the nonlinear problem}
 	\begin{figure}[h]
+		\includegraphics[scale=0.5]{img/Circle3D.png}
+		\caption{Data points mapped to a 3-dimensional space using the 'rbf' kernel.}
+		\label{Fig:rbf3d}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}{}
+	\frametitle{Solving the nonlinear problem}
+	\begin{figure}[h]
 		\begin{tabular}{ll}
 			\includegraphics[scale=0.35]{img/rbfSVM_moon.png}
 			&
@@ -467,7 +485,12 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 
 \begin{frame}{}
 	\frametitle{More kernel applications}
-    Some interessting kernel applications.
+    Some interessting kernel applications:
+    \begin{itemize}
+        \item Image recognition/classification (with SVMs)
+        \item Computer vision and computer graphics, 3D reconstruction
+        \item Kernel principal component analysis
+    \end{itemize}
 \end{frame}
 %------------------------------------------------
 

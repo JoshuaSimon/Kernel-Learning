@@ -9,6 +9,7 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+from numpy.core.defchararray import title
 from scipy import optimize
 from pandas import read_csv
 from functools import partial, update_wrapper
@@ -108,6 +109,12 @@ def polynomial(x1, x2, d=3, r=0, gamma='auto'):
     return (gamma * np.dot(x1, x2) + r)**d
 
 
+def rbf(x1, x2):
+    """ Radial basis kernel. """
+    diff = x1 - x2
+    return np.exp(-1.0 * np.dot(diff, diff))
+
+
 def grbf(x1, x2, gamma='scale'):
     """ Gaussian radial basis function for RBF kernels. """
     if gamma == 'auto':
@@ -129,7 +136,7 @@ def sigmoid(x1, x2, r=0, gamma='auto'):
     return np.tanh(gamma * np.dot(x1, x2) + r)
 
 
-def plot_SVM(xTrain, yTrain, x0Predict, x1Predict, yPredict, support):
+def plot_SVM(xTrain, yTrain, x0Predict, x1Predict, yPredict, support, title):
     """ Plots training data and support vectors with decision boundary. """
     plt.scatter(xTrain[:,0], xTrain[:,1], c=yTrain, 
                 label="Training Data")
@@ -141,6 +148,7 @@ def plot_SVM(xTrain, yTrain, x0Predict, x1Predict, yPredict, support):
                 colors='k', levels=[-1, 0], alpha=0.3, 
                 linestyles=['--', '-']);
     plt.legend()
+    plt.title(title)
     plt.show()
 
 
@@ -158,9 +166,10 @@ if __name__ == "__main__":
                 "src/examples/data/moonshape.csv",
                 "src/examples/data/linearshape.csv"]
     try:
-        data = read_csv(filenames[1])
+        infile = filenames[1]
+        data = read_csv(infile)
     except FileNotFoundError: 
-        print("Couldn't find file: %s. Please check the file path." % (filenames[1]))
+        print("Couldn't find file: %s. Please check the file path." % (infile))
         exit()
 
     # Map training data.
@@ -169,7 +178,7 @@ if __name__ == "__main__":
     yTrain = np.where(yTrain == 0, -1, yTrain)
 
     # Train the SVM model using different kernel functions.
-    kernels = [linear, dim_plus_1,
+    kernels = [linear, dim_plus_1, rbf,
                 wrapped_partial(polynomial, d=3, r=0.0, gamma='auto'), 
                 wrapped_partial(grbf, gamma='scale'), 
                 wrapped_partial(sigmoid, r=0.0, gamma='auto')]
@@ -189,4 +198,4 @@ if __name__ == "__main__":
         yPredict = model.predict(xPredict).reshape(x0Predict.shape)
 
         # Plot the results of the fitted model w ith decision boundary.
-        plot_SVM(xTrain, yTrain, x0Predict, x1Predict, yPredict, support)
+        plot_SVM(xTrain, yTrain, x0Predict, x1Predict, yPredict, support, title=kernel.__name__)
