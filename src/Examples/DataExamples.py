@@ -28,7 +28,9 @@ def gramian(X, kernel):
 
 def plot_2D(X, y):
     """ Standard 2D scatter plot. """
-    plt.scatter(X[:, 0], X[:, 1], c=y)
+    scatter = plt.scatter(X[:, 0], X[:, 1], c=y)
+    plt.legend(*scatter.legend_elements(),
+                loc="upper left", title="Labels")
     plt.show()
 
 
@@ -54,7 +56,8 @@ def plot_3D(X, y, z, elev=30, azim=30):
 #### LINEAR SEPERABLE DATA
 
 X, y = make_blobs(n_samples=20, centers=2, center_box=(-5.0, 5.0) ,random_state=1)
-#plot_2D(X, y)
+y = np.where(y == 0, -1, y) # Map labels to -1 and + 1.
+plot_2D(X, y)
 
 #linearshape = pd.DataFrame(dict(x=X[:,0], y=X[:,1], label=y))
 #linearshape.to_csv('linearshape.csv')
