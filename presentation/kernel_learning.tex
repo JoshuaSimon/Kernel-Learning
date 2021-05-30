@@ -141,7 +141,7 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 
 \begin{frame}{}
     \frametitle{Linearly separable data classes}
-    In machine learning, a well established classification method are the so called \textbf{Support Vector Machines} (SVM). Developed by Vladimir Vapnik and his coworkers in the 1990s, SVMs are still a relevent topic and an even more powerfull tool for \textbf{classification} and \textbf{regression}.
+    In machine learning, a well established classification method are the so called \textbf{Support Vector Machines} (SVM). Developed by Vladimir Vapnik and his coworkers in the 1990s, SVMs are still a relevent topic and an even more powerful tool for \textbf{classification} and \textbf{regression}.
 \end{frame}
 
 
@@ -165,12 +165,19 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
     \frametitle{Dot product and vector norm}
     A simple type of similarity measure is a \textbf{dot product}. Given two vectors $x, x' \in \mathbb{R}^n$ the canonical dot product is defined as
     \begin{equation}
-        \langle x,x' \rangle = (x')^T x = \sum_{i = 1}^{n} x_i x'_i.
+        \langle x,x' \rangle = (x')^T x = \sum_{i = 1}^{n} [x_i] [x']_i,
     \end{equation}
-    Futhermore this allows a calculation of the \textbf{norm} (length) of a single vector $x$ as 
+    where $\left[x\right]_i$ denotes the $i$th entry of $x$. Futhermore this allows a calculation of the \textbf{norm} (length) of a single vector $x$ as 
     \begin{equation}
         \left\lVert x \right\rVert = \sqrt{\langle x,x \rangle}.
     \end{equation}
+\end{frame}
+
+
+\begin{frame}{}
+    \frametitle{Dot product and vector norm}
+    Given a vector space $\mathcal{V}$ (mostly over $\mathbb{R}$ or $\mathbb{C}$) and a dot product, one can define a so called \textbf{dot product space} or \textbf{Pre-Hilbert space} $\mathcal{H}$, where every pair of elements $x, x' \in \mathcal{V}$ is assigned to a scalar value, the dot product of $x$ and $x'$ \cite{Bronstein}. \\~\\
+
     More properties of vector spaces, dot products and norms can be found in \cite{Liesen}.
 \end{frame}
 
@@ -188,7 +195,7 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
     \begin{equation}
         f(x) = sgn \left( \langle w,x \rangle + b \right)
     \end{equation}
-    can be asigned.
+    can be assigned.
 \end{frame}
 
 
@@ -318,7 +325,7 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
             \textrm{subject to} \quad & 0 \leq \alpha_i \leq \frac{C}{m} \text{ } \forall i = {1, \dots, m} \text{ and } \sum_{i=1}^{m} \alpha_i y_i = 0. 
         \end{aligned}
 	\end{equation}
-	This classifier is referred to as C-SV classifier and can be used to prevent overfittintg by allowing the classifier to make false classifications. \\
+	This classifier is referred to as C-SV classifier and can be used to prevent overfitting by allowing the classifier to make false classifications. \\
 	More classifiers using soft margins can be found in \cite{Schoelkopf}(Chap. 7.5).
 \end{frame}
 
@@ -381,9 +388,9 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 
 \begin{frame}{}
 	\frametitle{The kernel trick}
-	To extend the introduced SVM algorithm, we can substitut \eqref{eq:5} by applying a kernel of the form
+	To extend the introduced SVM algorithm, we can substitute \eqref{eq:5} by applying a kernel of the form
     \begin{equation}
-        k(x,x') = \langle \Phi (x), \Phi (x_i) \rangle
+        k(x,x') = \langle \Phi (x), \Phi (x') \rangle
     \end{equation}
     where 
     \begin{equation}
@@ -392,7 +399,7 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
             (x) & \mapsto \Phi (x)
         \end{aligned}
     \end{equation}
-    is a function that maps an input from $ \mathcal{X} $ to a dot product space $ \mathcal{H} $. This is referred to as the \textbf{kernel trick}.
+    is a function that maps an input from $ \mathcal{X} $ into a dot product space $ \mathcal{H} $. This is referred to as the \textbf{kernel trick}.
 \end{frame}
 
 
@@ -444,7 +451,7 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 	\frametitle{Solving the nonlinear problem}
 	\begin{figure}[h]
 		\includegraphics[scale=0.5]{img/Circle3D.png}
-		\caption{Data points mapped to a 3-dimensional space using the 'rbf' kernel.}
+		\caption{Data points mapped into a 3-dimensional space using the 'rbf' kernel.}
 		\label{Fig:rbf3d}
 	\end{figure}
 \end{frame}
@@ -521,6 +528,9 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
             \bibitem[Reinhardt, 2012]{Reinhardt} Reinhardt, Rüdiger, Armin Hoffmann, Tobias Gerlach
             \newblock Nichtlineare Optimierung: Theorie, Numerik und Experimente. Springer-Verlag, 2012.
 
+            \bibitem[Bronstein, 2020]{Bronstein}  Bronstein, Ilja N., et al. 
+            \newblock Taschenbuch der Mathematik. 11. Auflage, Springer-Verlag, 2020.
+
             \bibitem[Chang, 2011]{libsvm} Chang, Chih-Chung, Chih-Jen Lin
             \newblock LIBSVM : A library for support vector machines. ACM Transactions on Intelligent Systems and Technology, 2:27:1--27:27, 2011. Software available at \url{https://www.csie.ntu.edu.tw/~cjlin/libsvm/}.
 
@@ -542,6 +552,7 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
     \bigskip
 
     \normalsize
+    \centering
     Follow our development on GitHub \faicon{github} 
     \url{https://github.com/JoshuaSimon/Kernel-Learning}
     
