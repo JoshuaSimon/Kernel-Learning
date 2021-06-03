@@ -309,10 +309,10 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 	\begin{equation}
 		\begin{aligned}
 			\min_{w \in \mathcal{H}, \xi \in \mathbb{R}^{n}} \quad & \tau (w, \xi) = \frac{1}{2} \lVert w \rVert^2 + \frac{C}{m} \sum_{i=1}^{m} \xi_{i} \\
-			\textrm{subject to} \quad & y_{i} \left( \langle w,x \rangle + b \right) \geq 1 - \xi_{i} \text{ } \forall i = {1, \dots, m}, 
+			\textrm{subject to} \quad & y_{i} \left( \langle w,x \rangle + b \right) \geq 1 - \xi_{i} \text{ } \forall i = {1, \dots, m}. 
 		\end{aligned}
 	\end{equation}
-    where $C \in \mathbb{R}$ is a regularization parameter.
+    By making $\xi_{i}$ large enough, the constraint can always be met, which is we penalize them in the objective function with $\frac{C}{m}$, where $C \in \mathbb{R}$ is a regularization parameter.
 \end{frame}
 
 
