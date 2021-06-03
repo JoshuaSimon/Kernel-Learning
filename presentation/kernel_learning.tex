@@ -165,7 +165,7 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
     \frametitle{Dot product and vector norm}
     A simple type of similarity measure is a \textbf{dot product}. Given two vectors $x, x' \in \mathbb{R}^n$ the canonical dot product is defined as
     \begin{equation}
-        \langle x,x' \rangle = (x')^T x = \sum_{i = 1}^{n} [x_i] [x']_i,
+        \langle x,x' \rangle = (x')^T x = \sum_{i = 1}^{n} [x]_i [x']_i,
     \end{equation}
     where $\left[x\right]_i$ denotes the $i$th entry of $x$. Futhermore this allows a calculation of the \textbf{norm} (length) of a single vector $x$ as 
     \begin{equation}
@@ -225,7 +225,7 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 \begin{frame}{}
     \frametitle{Hyperplane classifiers - KKT conditions}
     The Karush-Kuhn-Tucker (KKT) complementarity conditions of optimization theory state, that at the saddle point, the derivatives of $L$ with respect to the
-    primal variables must vanish, since
+    primal variables must vanish, so
     \begin{equation}
         \frac{\partial}{\partial b} L(w,b,\alpha) = 0 \text{ and } \frac{\partial}{\partial w} L(w,b,\alpha) = 0
     \end{equation}
@@ -246,6 +246,7 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
             \textrm{subject to} \quad & \alpha_i \geq 0 \text{ } \forall i = {1, \dots, m} \text{ and } \sum_{i=1}^{m} \alpha_i y_i = 0. 
         \end{aligned}
     \end{equation}
+    The dual optimization problem \eqref{eq:4} is a \textbf{convex quadratic programming problem} and therefore can be solved by using standard optimization techniques.
 \end{frame}
 
 
