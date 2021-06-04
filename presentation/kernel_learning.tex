@@ -124,7 +124,7 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
     \frametitle{Linearly separable data classes}
     First, let's consider a given data set $\mathcal{X}$ of labeled points (inputs) with individual labels $y_i \in \left\{ -1,1 \right\}$, e.g. $(x_1,y_1), ..., (x_m, y_m) \in \mathcal{X} \times \left\{ -1,1 \right\}$. \\~\\
     
-    Our goal is to implement a classification method, which is able to classify new and unlabeld data points with the right or "best" label. \\~\\
+    Our goal is to implement a classification method, which is able to classify new and unlabeld data points with the right or 'best' label. \\~\\
 \end{frame}
 
 
@@ -213,7 +213,7 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 
 \begin{frame}{}
     \frametitle{Hyperplane classifiers - A constrained optimization problem}
-    The \textbf{optimal hyperplane} can be calculated by finding the normal vector that leads to the largest margin. Thus we need to solve the optimization problem
+    The \textbf{optimal hyperplane} can be calculated by finding the normal vector $w$ that leads to the largest margin. Thus we need to solve the optimization problem
     \begin{equation} \label{eq:1}
         \begin{aligned}
             \min_{w \in \mathcal{H}, b \in \mathbb{R}} \quad & \tau (w) = \frac{1}{2} \lVert w \rVert^2 \\
@@ -291,7 +291,7 @@ Otto-Friedrich-University Bamberg \\ % Your institution for the title page
 	\begin{figure}
 		\centering
 		\includegraphics[width=0.7\linewidth]{img/LinearSVM_complete.png}
-		\caption{Implementation of a SVM using the 'linear' Kernel.}
+		\caption{Implementation of a SVM using the 'linear' kernel.}
 		\label{fig:linearsvm}
 	\end{figure}
 	 
