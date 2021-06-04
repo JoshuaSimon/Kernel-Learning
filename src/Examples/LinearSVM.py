@@ -10,9 +10,19 @@ X, y = make_blobs(n_samples=20, centers=2, center_box=(-5.0, 5.0) ,random_state=
 model = svm.SVC(kernel='linear')
 model.fit(X, y)
 
-#scatterplot (data)
+# Scatterplot (data).
 plt.scatter(X[:, 0], X[:, 1], c=y)
 plt.show()
+
+# Scatterplot with possible hyperplanes.
+plt.scatter(X[:, 0], X[:, 1], c=y)
+plt.axline((-6.5, 1.0), slope=-0.4, linestyle='--', color='black', label='Hyperplane 1')
+plt.axline((-6.5, 4.0), slope=-1.4, linestyle='-.', color='blue', label='Hyperplane 2')
+plt.axline((-4.2, 4.0), slope=-1.2, linestyle=':', color='green', label='Hyperplane 3')
+plt.legend()
+plt.show()
+
+
 
 plt.scatter(X[:, 0], X[:, 1], c=y)
 
