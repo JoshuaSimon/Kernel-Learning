@@ -14408,7 +14408,7 @@ Anastasia Sinitsyna (Otto-Friedrich-University Bamberg, anastasia.sinitsyna@stud
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="1.-Introduction">1. Introduction<a class="anchor-link" href="#1.-Introduction">&#182;</a></h1><h2 id="1.1-Linearly-separable-data-classes">1.1 Linearly separable data classes<a class="anchor-link" href="#1.1-Linearly-separable-data-classes">&#182;</a></h2><p>First, let's consider a given data set $\mathcal{X}$ of labeled points (inputs) with individual labels $y_i \in \left\{ -1,1 \right\}$, e.g. $(x_1,y_1), ..., (x_m, y_m) \in \mathcal{X} \times \left\{ -1,1 \right\}$. Our goal is to implement a classification method, which is able to classify new and unlabeld data points with the right or "best" label. In machine learning, a well established classification method are the so called <strong>Support Vector Machines</strong> (SVM). Developed by Vladimir Vapnik and his coworkers in the 1990s, SVMs are still a relevant topic and an even more powerful tool for <strong>classification</strong> and <strong>regression</strong>.</p>
+<h1 id="1.-Introduction">1. Introduction<a class="anchor-link" href="#1.-Introduction">&#182;</a></h1><h2 id="1.1-Linearly-separable-data-classes">1.1 Linearly separable data classes<a class="anchor-link" href="#1.1-Linearly-separable-data-classes">&#182;</a></h2><p>First, let's consider a given data set $\mathcal{X}$ of labeled points (inputs) with individual labels $y_i \in \left\{ -1,1 \right\}$, e.g. $(x_1,y_1), ..., (x_m, y_m) \in \mathcal{X} \times \left\{ -1,1 \right\}$. Our goal is to implement a classification method, which is able to classify new and unlabeled data points with the right or "best" label. In machine learning, a well-established classification method are the so called <strong>Support Vector Machines</strong> (SVM). Developed by Vladimir Vapnik and his coworkers in the 1990s, SVMs are still a relevant topic and an even more powerful tool for <strong>classification</strong> and <strong>regression</strong>.</p>
 <p>The following example shows a data set $\mathcal{X}$, which is linearly separable. By that we mean, that the labeled data can be separated by a straight line, so that each point with label $-1$ is on one side of the line and each point with label $1$ on the other side. The <code>make_blobs</code> function from the <code>sklearn.datasets</code> module can be used to generate some example data. The wrapper function <code>plot_2D</code> is used to draw a scatter plot of the generated data.</p>
 
 </div>
@@ -14456,7 +14456,7 @@ Anastasia Sinitsyna (Otto-Friedrich-University Bamberg, anastasia.sinitsyna@stud
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="1.2-Similarity-and-linear-algebra">1.2 Similarity and linear algebra<a class="anchor-link" href="#1.2-Similarity-and-linear-algebra">&#182;</a></h2><p>We now will briefly discuss similarity and some core concepts of linear algebra.</p>
-<h3 id="Similarity">Similarity<a class="anchor-link" href="#Similarity">&#182;</a></h3><p>To perform a classification, a similarity measure is needed. Finding a suitable measure is a core problem of machine learning. For now let's consider</p>
+<h3 id="Similarity">Similarity<a class="anchor-link" href="#Similarity">&#182;</a></h3><p>To perform a classification, a similarity measure is needed. Finding a suitable measure is a core problem of machine learning. For now, let's consider</p>
 \begin{equation}
     \begin{aligned}
         k: \mathcal{X} \times \mathcal{X} &amp; \rightarrow \mathbb{R} \\
@@ -14474,7 +14474,7 @@ This function $k$ is called a <strong>kernel</strong>. Unless stated otherwise, 
 \begin{equation}
     \langle x,x' \rangle = (x')^T x = \sum_{i = 1}^{m} [x]_i [x']_i,
 \label{eq:dotproduct} \tag{2}
-\end{equation}<p>where $\left[x\right]_i$ denotes the $i$th entry of $x$. Futhermore this allows a calculation of the <strong>norm</strong> (length) of a single vector $x$ as</p>
+\end{equation}<p>where $\left[x\right]_i$ denotes the $i$th entry of $x$. Furthermore this allows a calculation of the <strong>norm</strong> (length) of a single vector $x$ as</p>
 \begin{equation}
     \left\lVert x \right\rVert = \sqrt{\langle x,x \rangle}.
 \label{eq:nrom} \tag{3}
@@ -14491,7 +14491,7 @@ This function $k$ is called a <strong>kernel</strong>. Unless stated otherwise, 
 \end{equation*}<p>Here, $X$ is our problem space, so $X = \mathcal{X}$. In Cartesian coordinates, such a hyperplane can be described with a single linear equation of the following form</p>
 \begin{equation*}
     w_1 x_1 + w_2 x_2 + \dots + w_m x_m = b,
-\end{equation*}<p>where at least one $w_i$ is non-zero and $x_i, w_i, b \in \mathbb{R}$. So a hyperplane in a three-dimensional problem space $\mathcal{X}$ has dimension $dim(S) = 2$ and the shape of a plane. In a two-dimensional problem space, the shape of the hyperplane results as a straight line with $dim(S) = 1$.</p>
+\end{equation*}<p>where at least one $w_i$ is non-zero and $x_i, w_i, b \in \mathbb{R}$. So, a hyperplane in a three-dimensional problem space $\mathcal{X}$ has dimension $dim(S) = 2$ and the shape of a plane. In a two-dimensional problem space, the shape of the hyperplane results as a straight line with $dim(S) = 1$.</p>
 
 </div>
 </div>
@@ -14501,7 +14501,7 @@ This function $k$ is called a <strong>kernel</strong>. Unless stated otherwise, 
 \begin{equation}
     \langle w,x \rangle + b = 0
 \label{eq:hyperplane} \tag{4}
-\end{equation}<p>where $w \in \mathcal{H}, b \in \mathbb{R}$ shall be considered <a href="#Schölkopf">[Schölkopf, 2002]</a>. Here, $w$ is a weight vector, which can be seen as the normal vector of the hyperplane, while $b$ is a bias correcting the offset from the origin. Futhermore decision functions</p>
+\end{equation}<p>where $w \in \mathcal{H}, b \in \mathbb{R}$ shall be considered <a href="#Schölkopf">[Schölkopf, 2002]</a>. Here, $w$ is a weight vector, which can be seen as the normal vector of the hyperplane, while $b$ is a bias correcting the offset from the origin. Furthermore decision functions</p>
 \begin{equation}
     f(x) = sgn \left( \langle w,x \rangle + b \right)
 \label{eq:decfun1} \tag{5}
@@ -14570,14 +14570,14 @@ This function $k$ is called a <strong>kernel</strong>. Unless stated otherwise, 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>This begs the question of whether one can find an optimal hyperplane that has the best classification properties. In the next steps, we will make use of the mathematical optimization theory and introduce a toolchain of procedures that allow us to calculate the best possible hyperplane.</p>
-<h3 id="A-contrained-optimization-problem">A contrained optimization problem<a class="anchor-link" href="#A-contrained-optimization-problem">&#182;</a></h3><p>The <strong>optimal hyperplane</strong> can be calculated by finding the normal vector $w$ that leads to the largest margin. Thus we need to solve the optimization problem</p>
+<h3 id="A-constrained-optimization-problem">A constrained optimization problem<a class="anchor-link" href="#A-constrained-optimization-problem">&#182;</a></h3><p>The <strong>optimal hyperplane</strong> can be calculated by finding the normal vector $w$ that leads to the largest margin. Thus we need to solve the optimization problem</p>
 \begin{equation}
     \begin{aligned}
         \min_{w \in \mathcal{H}, b \in \mathbb{R}} \quad &amp; \tau (w) = \frac{1}{2} \lVert w \rVert^2 \\
         \textrm{subject to} \quad &amp; y_{i} \left( \langle w,x \rangle + b \right) \geq 1 \text{ } \forall i = {1, \dots, m}. 
     \end{aligned}
 \label{eq:objfun} \tag{6}
-\end{equation}<p>The constraints in $\eqref{eq:objfun}$ ensure that $f(x_i)$ will be $+1$ for $y_i = +1$ and $-1$ for  $y_i = -1$. The $\geq 1$ on the right hand side of the constraints effectively fixes the scaling of $w$. This leads to the maximum margin hyperplane. A detailed explanation can be found in <a href="#Schölkopf">[Schölkopf, 2002]</a>. The problem in $\eqref{eq:objfun}$ is also called a contrained optimization problem. We will also refer to this problem as our <strong>primal</strong> problem with the <strong>primal variables</strong> $w$ and $b$.</p>
+\end{equation}<p>The constraints in $\eqref{eq:objfun}$ ensure that $f(x_i)$ will be $+1$ for $y_i = +1$ and $-1$ for  $y_i = -1$. The $\geq 1$ on the right hand side of the constraints effectively fixes the scaling of $w$. This leads to the maximum margin hyperplane. A detailed explanation can be found in <a href="#Schölkopf">[Schölkopf, 2002]</a>. The problem in $\eqref{eq:objfun}$ is also called a constrained optimization problem. We will also refer to this problem as our <strong>primal</strong> problem with the <strong>primal variables</strong> $w$ and $b$.</p>
 <h3 id="Lagrangian">Lagrangian<a class="anchor-link" href="#Lagrangian">&#182;</a></h3><p>The constrained optimization problem in $\eqref{eq:objfun}$ can be re-written using the method of <strong>Lagrange multipliers</strong>. This leads to the Lagrangian</p>
 \begin{equation}
     L(w,b,\alpha) = \frac{1}{2} \lVert w \rVert^2 - \sum_{i=1}^{m} \alpha_i \left( y_{i} 
@@ -14616,13 +14616,13 @@ This function $k$ is called a <strong>kernel</strong>. Unless stated otherwise, 
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="2.-Linear-SVMs">2. Linear SVMs<a class="anchor-link" href="#2.-Linear-SVMs">&#182;</a></h1><p>This section deals with the application of linear support vector machines on different data examples and shows some limitations of the linear approach. Later soft margin classifier are introduced to show a tool, that can handle some more problems and has a greater relevance in real life applications. However, we will see the limits of the method when only using a linear SVM.</p>
+<h1 id="2.-Linear-SVMs">2. Linear SVMs<a class="anchor-link" href="#2.-Linear-SVMs">&#182;</a></h1><p>This section deals with the application of linear support vector machines on different data examples and shows some limitations of the linear approach. Later soft margin classifiers are introduced to show a tool, that can handle some more problems and has a greater relevance in real life applications. However, we will see the limits of the method when only using a linear SVM.</p>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="2.1-Maximum-margin-seperator">2.1 Maximum margin seperator<a class="anchor-link" href="#2.1-Maximum-margin-seperator">&#182;</a></h2><p>We now have all the theoretical background to go back to our inital classification problem. We can implement a SVM as a maximum margin separator for the given data set $\mathcal{X}$. Since our similarity measure $k(x, x_i)$ is expressed only through the canonical dot product $\langle x, x_i \rangle$, our kernel is called a <strong>linear kernel</strong>. Thus we speak of linear SVMs in this section.</p>
+<h2 id="2.1-Maximum-margin-seperator">2.1 Maximum margin seperator<a class="anchor-link" href="#2.1-Maximum-margin-seperator">&#182;</a></h2><p>We now have all the theoretical background to go back to our inital classification problem. We can implement a SVM as a maximum margin separator for the given data set $\mathcal{X}$. Since our similarity measure $k(x, x_i)$ is expressed only through the canonical dot product $\langle x, x_i \rangle$, our kernel is called a <strong>linear kernel</strong>. Thus, we speak of linear SVMs in this section.</p>
 <p>The following example uses the <code>sklearn.svm</code> implementation to create the model as a support vector classifier <code>SVC()</code> and the <code>fit()</code> method to train the model with our generated example data. In the model initialization, the <code>kernel</code> argument can be set to <code>'linear'</code>to apply the linear kernel. Here, <code>X</code>is a matrix containing the coordinates of our input patterns and <code>y</code>a vector containing the label information. After that, the data is plotted again with <code>plot_2D()</code> and the support vectors and decision boundary/margin are added to the figure by calling <code>plot_2D_svm()</code>. The support vectors are marked with a circle around the data point.</p>
 
 </div>
@@ -14735,7 +14735,7 @@ This function $k$ is called a <strong>kernel</strong>. Unless stated otherwise, 
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>As one can easily see, it is now much more difficult to find a separating linear hyperplane for these type of data. However, by allowing our classifier to make some 'mistakes' and therefore soften the optimazation constraints, we shall find a hyperplane for separating the data. This concept is called soft margin hyperplanes or soft margin separator/classifier and is introduced in the following section.</p>
+<p>As one can easily see, it is now much more difficult to find a separating linear hyperplane for these types of data. However, by allowing our classifier to make some 'mistakes' and therefore soften the optimization constraints, we shall find a hyperplane for separating the data. This concept is called soft margin hyperplanes or soft margin separator/classifier and is introduced in the following section.</p>
 
 </div>
 </div>
@@ -14918,7 +14918,7 @@ This function $k$ is called a <strong>kernel</strong>. Unless stated otherwise, 
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>We can see, that we can get acceptable results using the soft margin hyperplane classifier. The key is to find a suitable regularization parameter $C$. This is often one of the hardest tasks, since a priori estimations for $C$ can not be made. To find a satisfying $C$, techniques like cross validation can be used.</p>
+<p>We can see that we can get acceptable results using the soft margin hyperplane classifier. The key is to find a suitable regularization parameter $C$. This is often one of the hardest tasks, since a priori estimations for $C$ cannot be made. To find a satisfying $C$, techniques like cross validation can be used.</p>
 <p>Even though we have now found a valuable tool in soft margins, there are a number of problems in practice that cannot be solved with this alone. Let's consider following data sets.</p>
 
 </div>
@@ -15097,7 +15097,7 @@ This function $k$ is called a <strong>kernel</strong>. Unless stated otherwise, 
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="3.-Non-linear-SVMs">3. Non-linear SVMs<a class="anchor-link" href="#3.-Non-linear-SVMs">&#182;</a></h1><p>As seen before, there can be plenty of problems, which can not be separated well with the linear kernel. This section will cover a mathematical trick, that can be used to implicitly transform your given dataset $\mathcal{X}$ to a different dot product space with a higher dimension. In this space, our dataset will again become linearly separable.</p>
+<h1 id="3.-Non-linear-SVMs">3. Non-linear SVMs<a class="anchor-link" href="#3.-Non-linear-SVMs">&#182;</a></h1><p>As seen before, there can be plenty of problems, which cannot be separated well with the linear kernel. This section will cover a mathematical trick, that can be used to implicitly transform your given dataset $\mathcal{X}$ to a different dot product space with a higher dimension. In this space, our dataset will again become linearly separable.</p>
 <h2 id="3.1-The-kernel-trick">3.1 The kernel trick<a class="anchor-link" href="#3.1-The-kernel-trick">&#182;</a></h2><p>To extend the introduced SVM algorithm, we can substitute (<a href="#eq_11">11</a>) by applying a kernel of the form</p>
 \begin{equation}
     k(x,x') = \langle \Phi (x), \Phi (x') \rangle
@@ -15153,7 +15153,7 @@ This function $k$ is called a <strong>kernel</strong>. Unless stated otherwise, 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Each of the two following examples shows the mapping of the data from our two-dimensional problem space to a higher-dimensional feature space in the first plot. Here, the latter is a three-dimensional space. The mapping is calculated by evaluating the <code>rbf()</code> function for $ \mathcal{X} $ with <code>sigma=np.var(X)</code>, which returns the variance of $ \mathcal{X} $. The <code>plot_3D()</code> function is used to draw a three-dimensional scatter plot of the scaled data.</p>
-<p>We then create our non-linear model using the <code>sklearn.svm.SVC()</code> class by passing <code>kernel='rbf'</code> to the constructor. In the second plot, the corresponding separating hyperplane in the original problem space is shown. One can see, that the hyperplane now becomes a non-linear curve. We will call this type of support vector machines non-linear SVMs.</p>
+<p>We then create our non-linear model using the <code>sklearn.svm.SVC()</code> class by passing <code>kernel='rbf'</code> to the constructor. In the second plot, the corresponding separating hyperplane in the original problem space is shown. One can see that the hyperplane now becomes a non-linear curve. We will call this type of support vector machines non-linear SVMs.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -15294,7 +15294,7 @@ This function $k$ is called a <strong>kernel</strong>. Unless stated otherwise, 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="3.3-A-closer-look-at-kernels">3.3 A closer look at kernels<a class="anchor-link" href="#3.3-A-closer-look-at-kernels">&#182;</a></h2><p>This part of the notebook deals with further kernels, but above all the ground-up implementation of a kernel SVM and associated model diagnoses. In addition to the comparison of different kernels with each other, a comparison with another binary classification method should also be given at the end.</p>
-<h3 id="Example-of-kernels">Example of kernels<a class="anchor-link" href="#Example-of-kernels">&#182;</a></h3><p>So far we have only looked at the linear kernel and the RBF kernel. In practice, however, there are other useful kernels that can be used in the course of support vector machines. Some of these kernels are shown below.</p>
+<h3 id="Example-of-kernels">Example of kernels<a class="anchor-link" href="#Example-of-kernels">&#182;</a></h3><p>So far, we have only looked at the linear kernel and the RBF kernel. In practice, however, there are other useful kernels that can be used in the course of support vector machines. Some of these kernels are shown below.</p>
 <ul>
 <li><strong>Linear</strong>: $k(x,x') = \langle x, x' \rangle$</li>
 <li><strong>Polynomial</strong>:  $k(x,x') = \langle x, x' \rangle^{d}, d \in \mathbb{N}$</li>
@@ -15358,7 +15358,7 @@ This function $k$ is called a <strong>kernel</strong>. Unless stated otherwise, 
 \end{equation}<p>All of the above steps are based on <a href="#Tymchyshyn">[Tymchyshyn, 2020]</a>. There, the <strong>Sequential Minimal Optimization</strong> (SMO) algorithm is introduced as a highly eﬃcient method to perform a minimization for a dual optimization problem like the one present. The basic but more complex idea goes back to <a href="#Platt">[Platt, 1999]</a>. The algorithm states to freeze all $\alpha_i$ except two, $\alpha_{\color{red}M}$ and $\alpha_{\color{blue}L}$, and then perform minimization on $\Lambda$ with respect to these two variables only. The derivative of the approximated Lagrangian $\Lambda$ and the extremum condition leads to</p>
 \begin{equation}
     arg\,max \Lambda = t_{max} = \frac{q^T_0 u}{u^T P u}. \tag{25}
-\end{equation}<p>With these results we will now implement a python class called <code>KernelSVM</code>. In the constructor <code>__init__</code> the kernel function <code>kernel</code>, the regularization parameter <code>C</code> and the maximum solver iterations <code>max_iteration</code> are specified. The sequential minimal optimization algorithm is used to solve the sequential quadratic programming algorithm in the <code>fit</code> methode to calculate the $\alpha$ vector. The <code>restrict_to_square</code> methode is used in this optimization algorithm as a control for $\alpha$ by an additonal parameter $t$. The bias $b$ can be approximated by $b = \mathbb{E} \left[y_j - \sum_{i}\alpha_i y_i k(x_ix_j) \right]$ <a href="#Tymchyshyn">[Tymchyshyn, 2020]</a>. The <code>decision_function</code> methode is used to calculated the labels of a given input $x$, while <code>predict</code> is used to map the labels back to $0$ and $1$, since this is the default in the <code>sklearn.SVC</code> class. This is for comparison purposes only.</p>
+\end{equation}<p>With these results we will now implement a python class called <code>KernelSVM</code>. In the constructor <code>__init__</code> the kernel function <code>kernel</code>, the regularization parameter <code>C</code> and the maximum solver iterations <code>max_iteration</code> are specified. The sequential minimal optimization algorithm is used to solve the sequential quadratic programming algorithm in the <code>fit</code> method to calculate the $\alpha$ vector. The <code>restrict_to_square</code> method is used in this optimization algorithm as a control for $\alpha$ by an additional parameter $t$. The bias $b$ can be approximated by $b = \mathbb{E} \left[y_j - \sum_{i}\alpha_i y_i k(x_ix_j) \right]$ <a href="#Tymchyshyn">[Tymchyshyn, 2020]</a>. The <code>decision_function</code> method is used to calculate the labels of a given input $x$, while <code>predict</code> is used to map the labels back to $0$ and $1$, since this is the default in the <code>sklearn.SVC</code> class. This is for comparison purposes only.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -15470,7 +15470,7 @@ This function $k$ is called a <strong>kernel</strong>. Unless stated otherwise, 
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Comparison-with-the-scikit-learn-implementation">Comparison with the scikit learn implementation<a class="anchor-link" href="#Comparison-with-the-scikit-learn-implementation">&#182;</a></h3><p>To validate our implementation, we will compare this implementation to the one from <code>sklearn</code>. For this we use the two sample data sets already shown. Each model is trained on the given data set. The number of support vectors is then determined and the results for the calculated boundary are shown graphically. Also the fitting time for each model is printed to the console. The <code>compare_svm_models()</code> function wraps the model fitting and plotting. In addition to the data <code>X</code> and <code>y</code>, a list of model names <code>names</code> and a list of models <code>models</code> must be passed in the function call.</p>
+<h3 id="Comparison-with-the-scikit-learn-implementation">Comparison with the scikit learn implementation<a class="anchor-link" href="#Comparison-with-the-scikit-learn-implementation">&#182;</a></h3><p>To validate our implementation, we will compare this implementation to the one from <code>sklearn</code>. For this we use the two sample data sets already shown. Each model is trained on the given data set. The number of support vectors is then determined and the results for the calculated boundary are shown graphically. Also, the fitting time for each model is printed to the console. The <code>compare_svm_models()</code> function wraps the model fitting and plotting. In addition to the data <code>X</code> and <code>y</code>, a list of model names <code>names</code> and a list of models <code>models</code> must be passed in the function call.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -15630,13 +15630,13 @@ Kernel SVM: Number of support vectors: 31
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>As one can clearly see, our <code>KernelSVM</code> implementation is very close to the results of the <code>sklearn</code> solution. At first glance, the main differences in runtime and number of support vectors can be identified. The runtime of <code>KernelSVM</code> is mainly determined by the number of iterations, which where fixed to <code>max_iteration = 100</code> in every case. A runtime optimization could be brought about by additional convergence criteria in the solver algorithm, which terminate the iteration early if the solution no longer changes by more than $\epsilon$. Nevertheless, a quick result for the examples considered here can also be determined with the present solution. On the other hand, you can see that the number of support vectors with the <code>KernelSVM</code> is slightly higher than with the <code>sklearn</code> solution. This number could be due to the number of iterations. It is possible that the solution can be determined even more precisely with more iterations, which would lead to an even more similar number. However, it can be seen that the support vectors chosen by the model mostly match in both cases and the <code>KernelSVM</code> only needs additional support vectors to find the solution.</p>
+<p>As one can clearly see, our <code>KernelSVM</code> implementation is very close to the results of the <code>sklearn</code> solution. At first glance, the main differences in runtime and number of support vectors can be identified. The runtime of <code>KernelSVM</code> is mainly determined by the number of iterations, which were fixed to <code>max_iteration = 100</code> in every case. A runtime optimization could be brought about by additional convergence criteria in the solver algorithm, which terminate the iteration early if the solution no longer changes by more than $\epsilon$. Nevertheless, a quick result for the examples considered here can also be determined with the present solution. On the other hand, you can see that the number of support vectors with the <code>KernelSVM</code> is slightly higher than with the <code>sklearn</code> solution. This number could be due to the number of iterations. It is possible that the solution can be determined even more precisely with more iterations, which would lead to an even more similar number. However, it can be seen that the support vectors chosen by the model mostly match in both cases and the <code>KernelSVM</code> only needs additional support vectors to find the solution.</p>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Model-diagnostics">Model diagnostics<a class="anchor-link" href="#Model-diagnostics">&#182;</a></h3><p>Now that we have shown that our implementation of a kernel SVM can achieve good results, we will deal more with the diagnosis of models. In the first step we would like to use our <code>KernelSVM</code> to show the differences between different kernels. In the second part of this section we will compare the kernel SVM with an alternative binary classifier. In order to measure the classification power of these different methods and algorithms, we use the known key figures: accuracy, sensitivity, specificity. These can be determined using the so-called confusion matrix <a href="#Ting">[Ting, 2017]</a>. In statistics and especially in machine learning, a confusion matrix or error matrix is a tabular representation of the classification results of the underlying processes. Each row of the matrix represents the instances in an actual class while each column represents the instances in a predicted class. In our case there are four entries for the matrix: true positve ($tp$), true negative ($tn$), false positive ($fp$) and false negative ($fn$) classifications</p>
+<h3 id="Model-diagnostics">Model diagnostics<a class="anchor-link" href="#Model-diagnostics">&#182;</a></h3><p>Now that we have shown that our implementation of a kernel SVM can achieve good results, we will deal more with the diagnosis of models. In the first step we would like to use our <code>KernelSVM</code> to show the differences between different kernels. In the second part of this section, we will compare the kernel SVM with an alternative binary classifier. In order to measure the classification power of these different methods and algorithms, we use the known key figures: accuracy, sensitivity, specificity. These can be determined using the so-called confusion matrix <a href="#Ting">[Ting, 2017]</a>. In statistics and especially in machine learning, a confusion matrix or error matrix is a tabular representation of the classification results of the underlying processes. Each row of the matrix represents the instances in an actual class while each column represents the instances in a predicted class. In our case there are four entries for the matrix: true positive ($tp$), true negative ($tn$), false positive ($fp$) and false negative ($fn$) classifications</p>
 \begin{equation*}
     Conf = \begin{pmatrix}
         tp &amp; fn \\
@@ -15649,7 +15649,7 @@ Kernel SVM: Number of support vectors: 31
         sensitivity &amp; = \frac{tp}{tp + fn} \\
         specificity &amp; = \frac{tn}{fp + tn}.
     \end{aligned}
-\end{equation*}<p>Here $accuracy$ can be used to see the general goodness of the model, while $sensitivity$ measures the true positive rate and $specificity$ the true negative rate. The function <code>calculate_scores()</code> implementes these exact scores. After fitting the model, a test data set is used to calculate new predictions. These predictions are then compared to the true test values using <code>metrics.confusion_matrix()</code>.</p>
+\end{equation*}<p>Here $accuracy$ can be used to see the general goodness of the model, while $sensitivity$ measures the true positive rate and $specificity$ the true negative rate. The function <code>calculate_scores()</code> implements these exact scores. After fitting the model, a test data set is used to calculate new predictions. These predictions are then compared to the true test values using <code>metrics.confusion_matrix()</code>.</p>
 <p>We would also like to graphically display the performance of the models. Therefore a series of plots is created by <code>compare_models()</code>. The most left plot shows the given data set. The following plots in line show the fitted models by visualizing the decision boundaries in a similar manner like <code>plot_2D_svm()</code> but now assigning a color to each point on the grid rather than plotting only the decision cuvres. The idea of this layout was taken form <a href="https://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html#sphx-glr-auto-examples-classification-plot-classifier-comparison-py">https://scikit-learn.org/stable/auto_examples/classification/plot_classifier_comparison.html#sphx-glr-auto-examples-classification-plot-classifier-comparison-py</a> and was modified for our purposes. For a simple use, <code>compare_models()</code> takes <code>X</code> and <code>y</code> data as well as a list of the model names <code>names</code> and a list of the model objects <code>classifiers</code> as inputs. Train and test split as well as fitting and predicting are performed internally.</p>
 
 </div>
@@ -15783,7 +15783,7 @@ Kernel SVM: Number of support vectors: 31
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Comparision-of-different-kernels">Comparision of different kernels<a class="anchor-link" href="#Comparision-of-different-kernels">&#182;</a></h3><p>Here, different kernels are compared on different datasets.</p>
+<h3 id="Comparison-of-different-kernels">Comparison of different kernels<a class="anchor-link" href="#Comparison-of-different-kernels">&#182;</a></h3><p>Here, different kernels are compared on different datasets.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -15926,7 +15926,7 @@ Scores: accuracy: 1.0, sensitivity: 1.0, specificity: 1.0
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Comparison-with-Quadratic-Discriminant-Analysis-(QDA)">Comparison with Quadratic Discriminant Analysis (QDA)<a class="anchor-link" href="#Comparison-with-Quadratic-Discriminant-Analysis-(QDA)">&#182;</a></h3><p>Here different binary classifier are compared with each other.</p>
+<h3 id="Comparison-with-Quadratic-Discriminant-Analysis-(QDA)">Comparison with Quadratic Discriminant Analysis (QDA)<a class="anchor-link" href="#Comparison-with-Quadratic-Discriminant-Analysis-(QDA)">&#182;</a></h3><p>Here different binary classifiers are compared with each other.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
