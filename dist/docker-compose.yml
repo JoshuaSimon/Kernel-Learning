@@ -1,0 +1,13 @@
+version: "3.0"
+services:
+  analyzer:
+    command: jupyter lab --ip=0.0.0.0 --no-browser --port=1234 --NotebookApp.password='sha256:15ee59ac7138:54bbb1dabccae70a13643926a23d485756c053652d8cbae643ba190089e611e2'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: 'no'
+    ports:
+    - '1234:1234'
+    volumes:
+    - './export:/usr/src/safeuser/export'
+    - './src:/usr/src/safeuser/src'
