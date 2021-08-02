@@ -2,7 +2,7 @@
 
 ## Contents
 
-The distributed package contains to folders:
+The distributed package contains two folders:
 - export: Here, you can find a static HTML export of the notebook. Please refer to this file if you have any trouble with the .ipynb within jupyter lab.
 - src: Here, you can find the .ipynb file with should be opened within the docker container using jupyter lab. 
 
